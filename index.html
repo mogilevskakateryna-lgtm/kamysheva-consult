@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Бесплатная консультация · Виктория Камышева</title>
+<meta name="description" content="Запись на бесплатную консультацию к нутрициологу Виктории Камышевой и её команде.">
+<meta property="og:title" content="Бесплатная консультация · Виктория Камышева">
+<meta property="og:description" content="Заполните короткую анкету, и мой ассистент подберёт удобное время для консультации.">
+<meta property="og:image" content="https://mogilevskakateryna-lgtm.github.io/kamysheva-consult/preview.jpg">
+<meta property="og:url" content="https://mogilevskakateryna-lgtm.github.io/kamysheva-consult/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F5EFE6">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+  html,body{margin:0;height:100%;background:#F5EFE6}
+  iframe{display:block;border:0;width:100%;height:100vh;height:100dvh}
+  .loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font:600 15px system-ui,sans-serif;color:#7C7268;pointer-events:none;transition:opacity .3s}
+</style>
+</head>
+<body>
+<div class="loading" id="loading">Загружаем анкету…</div>
+<iframe id="form" title="Анкета записи на консультацию" allow="clipboard-write"></iframe>
+<script>
+  // Ссылка на веб-приложение Apps Script (заканчивается на /exec)
+  var EXEC_URL = "https://script.google.com/macros/s/AKfycbzYZqQJknFkwQK9TGPTjx_2m16jOVo08fyroTJnchCuZBSENc3-r0ehsETyDu_M5Lx2/exec";
+  // Метка источника из адреса страницы (?src=reels) передаётся в анкету
+  var src = new URLSearchParams(location.search).get("src");
+  var f = document.getElementById("form");
+  f.onload = function(){ document.getElementById("loading").style.opacity = 0; };
+  f.src = EXEC_URL + (src ? "?src=" + encodeURIComponent(src) : "");
+</script>
+</body>
+</html>
